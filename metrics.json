@@ -1,32 +1,22 @@
 {
-  "_status": "pending_real_data",
-  "_notice": "此檔為待測量結構標記，不是正式統計結果；所有數值均為 null，禁止將 null 解讀為 0。",
-  "_source": "Week 08 PDF ingestion notebook; no original regulation PDFs or processed chunks available in provided materials as checked 2026-11-04.",
-  "_input_required": "Place actual PDFs under data/raw/<category>/*.pdf, run notebooks/01_Data_Ingestion.ipynb Section 5 then Section 6 and save outputs.",
-  "dataset": {
-    "pdf_count": null,
-    "raw_chunk_count": null,
-    "clean_chunk_count": null,
-    "categories": null
-  },
-  "結構健全度 Phase_1_Mechanical_Sanity": {
-    " 形態可行性 Morphology_Median_Length": {
-      "Cleaned": null,
-      "Raw": null
+    "結構健全度 Phase_1_Mechanical_Sanity": {
+        " 形態可行性 Morphology_Median_Length": {
+            "Cleaned": 272.0,
+            "Raw": 204.0
+        },
+        "拓撲錨定率 Topology_TAR_Score": {
+            "Cleaned": 1.0,
+            "Raw": 1.0
+        },
+        "深度變異量 Depth_Variance_SDV": {
+            "Cleaned": 0.0,
+            "Raw": 0.0
+        }
     },
-    "拓撲錨定率 Topology_TAR_Score": {
-      "Cleaned": null,
-      "Raw": null
-    },
-    "深度變異量 Depth_Variance_SDV": {
-      "Cleaned": null,
-      "Raw": null
+    "語意品質 Phase_2_Semantic_Quality": {
+        "夏農資訊熵 Information_Median_Entropy": {
+            "Cleaned": 5.0484042814113135,
+            "Raw": 4.714877070634452
+        }
     }
-  },
-  "語意品質 Phase_2_Semantic_Quality": {
-    "夏農資訊熵 Information_Median_Entropy": {
-      "Cleaned": null,
-      "Raw": null
-    }
-  }
 }

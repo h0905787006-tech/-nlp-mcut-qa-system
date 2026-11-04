@@ -33,9 +33,9 @@
   - [x] 1-A
   - [x] 1-B
   - [x] 1-C
-- [ ] **結構健全度**：待原始 PDF 到位後計算 TAR、中位數長度。
-- [ ] **語意品質（選修）**：待真實 PDF 後計算熵。
-- [ ] **觀測儀表板與報告**：待真實 PDF 後產生 4 拼圖及 `metrics.json`。
+- [x] **結構健全度**：已用 9 份真實 PDF 計算 TAR 與 chunk 長度中位數。
+- [x] **語意品質（選修）**：已計算 Raw／Cleaned 的 Shannon 資訊熵中位數。
+- [x] **觀測儀表板與指標**：已產生 4 拼圖並輸出根目錄 `metrics.json`。
 
 ## 執行方式
 1. 在專案資料夾安裝：`pip install -r requirements.txt`。
@@ -44,8 +44,9 @@
 4. 執行時檔案撞名會詢問 `O` 覆蓋、`A` 追加或 `S` 略過；若無法輸入則安全略過。
 5. 根目錄自動產出 `metrics.json`，並將數據填入 `DATA_REPORT.md`（第 9 週課堂報告）。
 
-注意：此交付包不包含課程原始校規 PDF，因此目前不包含真實儀表板及指標數值。請勿以模擬值作為測量結果。
+本次以本機 `data/raw/` 內 9 份校規 PDF 完成實測；原始 PDF、interim Markdown 與 processed JSON 依課程規定僅保留在本機，不上傳 GitHub。
 
 ## GitHub 提交
 `git add .` → `git commit -m "feat: 完成 Week 08 資料前處理 (任務 1-A, 1-B, 1-C)"` → `git push`。
 請確認 GitHub 上**沒有**原始 PDF、大量 interim Markdown 或 processed JSON。
+
