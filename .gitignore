@@ -45,3 +45,13 @@ data/processed/*
 *.parquet
 *.sqlite3
 *.db
+
+# Week 04 / 08 data artifacts (retain .keep placeholders)
+data/interim/*
+!data/interim/.keep
+reports/figures/*.png
+reports/figures/*.jpg
+reports/figures/*.jpeg
+reports/figures/*.pdf
+
+# The original repository already excludes data/raw and data/processed outputs.
