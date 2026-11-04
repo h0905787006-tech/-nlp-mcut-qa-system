@@ -14,3 +14,7 @@ numpy
 # 
 # (Future packages for NLP, ML, and APIs will be added dynamically.)
 # =====================================================================
+
+# Week 04 / 08: PDF data ingestion and visualization
+docling
+matplotlib
