@@ -1,9 +1,0 @@
-# Keep large generated datasets out of GitHub
-.venv/
-__pycache__/
-.ipynb_checkpoints/
-data/raw/**/*.pdf
-data/interim/**/*.md
-data/processed/**/*.json
-!data/interim/**/.keep
-!data/processed/**/.keep
