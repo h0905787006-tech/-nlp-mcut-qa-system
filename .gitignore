@@ -49,9 +49,12 @@ data/processed/*
 # Week 04 / 08 data artifacts (retain .keep placeholders)
 data/interim/*
 !data/interim/.keep
-reports/figures/*.png
-reports/figures/*.jpg
-reports/figures/*.jpeg
-reports/figures/*.pdf
 
 # The original repository already excludes data/raw and data/processed outputs.
+
+# Week 08 official ignore rules; keep reports/figures screenshots trackable
+data/raw/**/*.pdf
+data/interim/**/*.md
+data/processed/**/*.json
+!data/interim/**/.keep
+!data/processed/**/.keep
