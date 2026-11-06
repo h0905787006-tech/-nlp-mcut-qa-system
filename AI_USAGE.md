@@ -121,53 +121,58 @@
 
 ## Week 09：期中資料前處理報告
 
-### AI 協助的部分
+### AI 協助的部分與建議提示詞
 
 1. **整理正式格式與檢查規格**
    - AI 讀取老師提供的 `DATA_REPORT.md`，依原有第 1–5 節與 3.1–3.4 小節逐欄整理內容。
    - AI 檢查報告中沒有殘留未填欄位、待貼內容或模板說明，並核對圖片固定檔名。
+   - 建議提示詞：
+
+     ```text
+     請以我提供的 DATA_REPORT.md 為唯一模板完成報告。不得新增、刪除、改名或調整任何標題與欄位順序，只能把待填內容替換成我的實測結果。完成後請檢查是否仍有未填欄位、模板說明或錯誤圖片路徑。
+     ```
 
 2. **解讀評估指標**
    - AI 依 `metrics.json` 與 `dashboard.png` 解讀 Median Length、TAR、SDV、Entropy，產生 `DATA_REPORT.md` 第 3.2 節的完整回答。
    - AI 提出兩個需要查證的主張：清洗使典型 chunk 變長但保留標題錨點；資訊熵中位數提高仍不能排除低熵異常值。
+   - 建議提示詞：
+
+     ```text
+     請解讀我的資料前處理儀表板：Median Length 由 204 增為 272，TAR 維持 100%，SDV 均為 0，Median Entropy 由 4.7149 增為 5.0484。請說明每個指標代表什麼、清洗前後可能發生什麼變化，並提出兩句可以回到真實 Markdown 或程式輸出查證的明確主張。不要把中位數改善解讀成所有 chunks 都改善。
+     ```
 
 3. **協助分析指定 chunks**
    - AI 依 `09_midterm_chunks.ipynb` 的輸出，整理兩筆指定資料的來源檔、position、行號、長度、資訊熵與驗證碼。
    - AI 協助說明 7,304 字元法規 chunk 過長的原因、4,367 字元申請表 chunk 低熵的原因，以及對問答檢索的可能影響。
+   - 建議提示詞：
+
+     ```text
+     請分析 09_midterm_chunks.ipynb 指定的兩個完整 chunks。第一筆是大學部學則第 501 行，position 9，長度 7,304，熵 5.46，驗證碼 b5e1784a；第二筆是學生抵免學分辦法第 277 行，position 25，長度 4,367，熵 3.06，驗證碼 f2c4c2f8。請分別說明文字類型、過長或低熵原因，以及對問答檢索的影響。不得更改行號、position、數值或驗證碼，也不要補寫檔案中不存在的內容。
+     ```
 
 4. **協助找出尚未解決的問題**
    - AI 檢查未被第 3.4 節使用的 cleaned 檔案，提出 `cleaned_A271010023_圖書館管理作業規範.md` 第 1757 行的大型表格問題。
    - AI 建議使用 table-aware chunking、1,200–1,500 字元長度上限及繼承來源 metadata；這些是後續改善建議，本次沒有直接修改固定管線。
+   - 建議提示詞：
+
+     ```text
+     請從未被第 3.4 節使用的 cleaned Markdown 中找一個仍有問題的完整 chunk，列出檔名、起始行、標題與部分原文，並說明問題、可能原因、具體修正方法及對問答檢索的影響。不可使用大學部學則第 501 行或學生抵免學分辦法第 277 行的兩個指定 chunks；所有證據必須能回到原檔查核。
+     ```
 
 5. **協助做繳交檢查**
    - AI 檢查 Git 只追蹤報告、Notebook、AI 紀錄與規範圖片，沒有上傳 raw PDF、interim Markdown 或 processed JSON。
    - AI 核對 `reports/figures/` 最後只保留 `1a_compare.png`、`1b_compare.png`、`1c_compare.png`、`dashboard.png` 與 `.keep`。
+   - 建議提示詞：
 
-### 我自行完成與查證的部分
-
-- 我使用 VS Code Compare 檢視真實 raw／cleaned Markdown，並提供最後採用的三張差異截圖；AI 沒有修改截圖內容。
-- 我確認 1-A 使用圖書館規範 raw 第 300 行，1-B 使用 raw 第 19、21 行與 cleaned 第 16 行，1-C 使用 raw 第 360、361 行與 cleaned 第 322 行，沒有使用模板禁止的 Notebook 範例。
-- 我以 Notebook 輸出核對 9 份 PDF、410／345 chunks、755 筆 schema、四項 metrics，以及驗證碼 `b5e1784a`、`f2c4c2f8`。
-- 我回到 `cleaned_A232020018_大學部學則.md` 第 501 行與 `cleaned_A232060013_學生抵免學分辦法.md` 第 277 行，讀到下一個 `##` 標題為止，再判斷 AI 的分析是否合理。
-- 最終內容與是否採用 AI 建議由我決定；AI 提出的數字若無法在 Notebook、Markdown 或 JSON 找到證據，就不寫入正式報告。
-
-### 實際提示詞
-
-  ```text
-  依內容完成
-  完全依照格式
-  給我1-A、1-B、1-C對應行數以及檔案名
-  改為1-A截圖
-  改為1-B截圖
-  改為1-C截圖檔案名與規則一致
-  github只保留符合規範的圖片
-  ```
+     ```text
+     請依 Week 09 繳交規則檢查 Git 變更：必須包含 DATA_REPORT.md、AI_USAGE.md、保留輸出的 09_midterm_chunks.ipynb，以及 reports/figures/ 中的 1a_compare.png、1b_compare.png、1c_compare.png、dashboard.png。不得追蹤 raw PDF、data/interim Markdown 或 data/processed JSON；請列出不符合規範的檔案，不要自行刪除未確認的資料。
+     ```
 
 ### AI 回答的採用與修正
 
 - **可以直接採用的部分：** 四項指標的數值整理、兩個指定 chunks 的驗證碼與位置，以及大型表格對檢索造成的風險說明，皆能回到本機輸出查證後採用。
 - **不能直接採用的部分：** AI 第一次改寫了 `DATA_REPORT.md` 原有格式，且最初的 1-A、1-B 圖碰到正式模板禁止的示例文字，因此不能直接繳交。
-- **修正方式：** 重新以老師提供的 `DATA_REPORT.md` 為唯一模板；三張最終截圖改由我在 VS Code Compare 中取得，檔名固定為 `1a_compare.png`、`1b_compare.png`、`1c_compare.png`。
+- **修正方式：** 重新以老師提供的 `DATA_REPORT.md` 為唯一模板；三張最終截圖改為 VS Code Compare 的實際畫面，檔名固定為 `1a_compare.png`、`1b_compare.png`、`1c_compare.png`。
 
 ### 本週反思
 
